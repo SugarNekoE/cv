@@ -1,0 +1,23 @@
+# Devenv
+.devenv*
+devenv.local.nix
+devenv.local.yaml
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
+
+# Local agent review ledgers
+.ai/
+
+# Svelte / Vite
+node_modules/
+.prerender/
+build/
+
+# Local environment values
+.env
+.env.*
+!.env.example

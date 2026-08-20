@@ -1,0 +1,4 @@
+interface:
+  display_name: "CV Repository Human Review"
+  short_description: "Track CV content and tooling review decisions"
+  default_prompt: "Use $human-review to build or continue this CV repository's tracked human review checklist."

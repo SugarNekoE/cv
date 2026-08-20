@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light" data-theme-preference="system">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      (() => {
+        const key = 'resume-theme';
+
+        try {
+          const stored = localStorage.getItem(key);
+          const preference = stored === 'light' || stored === 'dark' ? stored : 'system';
+          const resolved =
+            preference === 'system'
+              ? matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+              : preference;
+
+          document.documentElement.dataset.theme = resolved;
+          document.documentElement.dataset.themePreference = preference;
+          document.documentElement.style.colorScheme = resolved;
+        } catch {
+          const resolved = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.dataset.theme = resolved;
+          document.documentElement.style.colorScheme = resolved;
+        }
+      })();
+    </script>
+    <meta name="resume-prerender-head" />
+  </head>
+  <body>
+    <div id="app" data-prerendered="false"><template id="resume-prerender-body"></template></div>
+    <script type="module" src="/src/entries/zh.ts"></script>
+  </body>
+</html>
