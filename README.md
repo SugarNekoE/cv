@@ -3,6 +3,31 @@
 A bilingual, fully static résumé website built with bare Svelte, Vite, mdsvex,
 Tailwind CSS, self-hosted Noto Sans fonts, and Lucide icons.
 
+## Licensing
+
+The original framework and résumé text are copyright Asai Neko and use separate
+licenses:
+
+- **Framework — AGPL-3.0-only:** original website code, styles, build scripts,
+  configuration, and supporting project documentation are licensed under the
+  GNU Affero General Public License, version 3 only. See [LICENSE](LICENSE).
+- **Content — CC-BY-SA-4.0:** `src/contents/CV_en.md`, `src/contents/CV_zh.md`,
+  and the résumé text in generated HTML, PDF, or other exports are licensed under
+  Creative Commons Attribution-ShareAlike 4.0 International. See the
+  [content license](src/contents/LICENSE). Attribute the content to **Asai Neko**,
+  retain the [source repository](https://forge.asnk.io/sugar/cv) and
+  [license link](https://creativecommons.org/licenses/by-sa/4.0/), and indicate
+  changes. Shared adaptations must use the same or a compatible license as
+  specified in the full license text.
+
+Generated pages contain both framework code and résumé text; each retains its
+respective license. The package's `license` field describes the framework.
+
+Dependencies and third-party assets retain their own licenses, including the
+bundled Noto fonts, Lucide icons, and the Google Noto Emoji favicon with its
+[Apache-2.0 notice](public/noto-emoji-LICENSE.txt). The supplied avatar is outside
+these framework and résumé-text license grants.
+
 ## Content
 
 - `src/contents/CV_zh.md` is the authoritative Chinese résumé and renders at `/`.
