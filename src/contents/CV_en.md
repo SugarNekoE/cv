@@ -28,6 +28,44 @@ Member of NixCN, the Chinese Nix/NixOS community, and organizer of the NixCN Con
 
 Organization: [forge.asnk.io/nixcn](https://forge.asnk.io/nixcn)
 
+### Flake — Declarative NixOS & Home Manager Configuration
+
+A personal Nix flake for managing NixOS systems and Home Manager environments.
+
+- Designed a custom aspect-oriented layout and an embedded domain-specific language (DSL) in Nix to declare and compose NixOS and Home Manager configurations, with automatic module discovery and host assembly.
+- Organize applications, services, desktop environments, and hardware settings into shared modules and host-specific configurations.
+
+Repository: [forge.asnk.io/sugar/flake](https://forge.asnk.io/sugar/flake)
+
+### Asai Blog — Static Blog & Publishing System
+
+A static blog built with a functional programming stack: Haskell (Hakyll and Pandoc) for site generation and Elm for the interactive frontend, with content authored in Obsidian.
+
+- Compile published Markdown notes into static pages, resolving wiki links and attachments during the build.
+- Implement search, category and tag filtering, and keyboard navigation through an Elm interface.
+
+Repository: [forge.asnk.io/sugar/asai-blog](https://forge.asnk.io/sugar/asai-blog)
+
+### ACS K8s — Serverless CI Runners
+
+A Forgejo Actions runner system built on Alibaba Cloud ACS serverless Kubernetes, designed to reduce idle runner capacity and control costs compared with maintaining a dedicated server or an always-on cluster.
+
+- Use KEDA to scale ephemeral runners from the job queue, execute one job per runner, and scale runner pools to zero when idle.
+- Built a Go CLI for runner configuration, deployment, and diagnostics.
+- Use Buildah for container image builds instead of privileged Docker-in-Docker.
+
+Repository: [forge.asnk.io/sugar/acs-k8s](https://forge.asnk.io/sugar/acs-k8s)
+
+### Git Indexing System — Large Repository Processing
+
+Built a highly concurrent Git indexing system optimized for very large repositories such as the Linux kernel.
+
+- Handle workloads loading 1.5 million commits at once, with concurrent Git log queries and object retrieval.
+- Tuned kernel parameters for high-concurrency indexing workloads.
+- Optimized NFSv4 protocol usage for concurrent repository access.
+- Optimized Git core operations for log queries and object retrieval in large repositories.
+- Achieved measured I/O throughput of 3,200 IOPS.
+
 ### Ayame Cluster — Production Kubernetes Platform
 
 Designed, built, and maintain a production Kubernetes platform consisting of 3 control-plane nodes and 5 worker nodes, with infrastructure provisioning, cluster configuration, application deployment, and continuous delivery managed as code.

@@ -28,6 +28,44 @@ NixCN Nix/NixOS 中文社区成员，并参与主办 NixCN Conf 开源会议。
 
 组织：[forge.asnk.io/nixcn](https://forge.asnk.io/nixcn)
 
+### Flake — 声明式 NixOS 与 Home Manager 配置
+
+用于管理 NixOS 系统与 Home Manager 用户环境的个人 Nix flake。
+
+- 设计自定义的面向切面（aspect）布局，使用 Nix 构建嵌入式领域专用语言（DSL），用于声明与组合 NixOS 和 Home Manager 配置，实现模块自动发现与主机配置组装。
+- 将应用、服务、桌面环境及硬件设置组织为共享模块与主机专属配置。
+
+仓库：[forge.asnk.io/sugar/flake](https://forge.asnk.io/sugar/flake)
+
+### Asai Blog — 静态博客与发布系统
+
+采用函数式编程技术栈构建的静态博客：使用 Haskell（Hakyll 和 Pandoc）生成站点，使用 Elm 构建交互前端，内容通过 Obsidian 编写。
+
+- 将标记为已发布的 Markdown 笔记编译为静态页面，在构建时解析双链与附件引用。
+- 通过 Elm 界面实现搜索、分类与标签筛选，以及键盘导航。
+
+仓库：[forge.asnk.io/sugar/asai-blog](https://forge.asnk.io/sugar/asai-blog)
+
+### ACS K8s — Serverless CI Runner 系统
+
+基于阿里云 ACS Serverless Kubernetes 构建的 Forgejo Actions Runner 系统，旨在减少 Runner 空闲资源占用，相较于维护专用服务器或全天运行的集群，更好地控制成本。
+
+- 使用 KEDA 根据任务队列按需伸缩临时 Runner，每个 Runner 执行一个任务，空闲时将 Runner 池缩容至零。
+- 使用 Go 构建 CLI，统一管理 Runner 配置、部署与诊断。
+- 使用 Buildah 构建容器镜像，替代以特权模式运行的 Docker-in-Docker。
+
+仓库：[forge.asnk.io/sugar/acs-k8s](https://forge.asnk.io/sugar/acs-k8s)
+
+### Git 索引系统 — 超大规模仓库处理
+
+构建高并发 Git 索引系统，针对 Linux 内核等超大规模仓库进行优化。
+
+- 支持同时加载 150 万条提交记录，并发处理 Git 日志查询与对象读取。
+- 针对高并发索引负载调优内核参数。
+- 优化 NFSv4 协议使用，支持并发仓库访问。
+- 优化 Git 核心操作，改善超大规模仓库的日志查询与对象读取。
+- 实测 I/O 吞吐达到 3,200 IOPS。
+
 ### Ayame Cluster — 生产级 Kubernetes 平台
 
 独立设计、搭建并持续维护一个由 3 个控制节点和 5 个 Worker 节点组成的生产级 Kubernetes 平台，通过代码统一管理基础设施供应、集群配置、应用部署和持续交付。
