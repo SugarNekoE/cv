@@ -13,7 +13,7 @@ Systems-oriented software and infrastructure engineer focused on Linux, networki
 
 I enjoy designing reliable systems, building production infrastructure, and exploring emerging technologies and engineering practices.
 
-Member of NixCN, the Chinese Nix/NixOS community, and organizer of the NixCN Conf open-source conference.
+Linux kernel contributor, member of NixCN, the Chinese Nix/NixOS community, and organizer of the NixCN Conf open-source conference.
 
 ---
 

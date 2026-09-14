@@ -13,7 +13,7 @@
 
 喜欢设计可靠的系统、建设生产级基础设施，并持续探索前沿技术与工程实践。
 
-NixCN Nix/NixOS 中文社区成员，并参与主办 NixCN Conf 开源会议。
+Linux 内核贡献者，NixCN Nix/NixOS 中文社区成员，并参与主办 NixCN Conf 开源会议。
 
 ---
 
