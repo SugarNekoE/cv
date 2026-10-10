@@ -66,6 +66,8 @@ Built a highly concurrent Git indexing system optimized for very large repositor
 - Optimized Git core operations for log queries and object retrieval in large repositories.
 - Achieved measured I/O throughput of 3,200 IOPS.
 
+Website: [forge.asnk.io](https://forge.asnk.io)
+
 ### Ayame Cluster — Production Kubernetes Platform
 
 Designed, built, and maintain a production Kubernetes platform consisting of 3 control-plane nodes and 5 worker nodes, with infrastructure provisioning, cluster configuration, application deployment, and continuous delivery managed as code.
@@ -80,17 +82,6 @@ Designed, built, and maintain a production Kubernetes platform consisting of 3 c
 - Maintain the platform through Infrastructure as Code and declarative Kubernetes configuration.
 
 Repository: [forge.asnk.io/sugar/ayame-cluster](https://forge.asnk.io/sugar/ayame-cluster)
-
-### Windi — Email & Parcel Management System
-
-A full-stack email and parcel management application currently under active development.
-
-- Integrates with multiple third-party APIs to provide accurate parcel and shipment tracking.
-- Provides a unified interface for managing shipment information, documents, and related records.
-- Supports one-stop management and printing of shipping documents, labels, and covers.
-- Built as a full-stack application using Svelte, SvelteKit, and TypeScript.
-
-Repository: [forge.asnk.io/sugar/windi](https://forge.asnk.io/sugar/windi)
 
 ### NyaBot — Go Chatbot Framework
 

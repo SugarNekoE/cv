@@ -66,6 +66,8 @@ Linux 内核贡献者，NixCN Nix/NixOS 中文社区成员，并参与主办 Nix
 - 优化 Git 核心操作，改善超大规模仓库的日志查询与对象读取。
 - 实测 I/O 吞吐达到 3,200 IOPS。
 
+网站：[forge.asnk.io](https://forge.asnk.io)
+
 ### Ayame Cluster — 生产级 Kubernetes 平台
 
 独立设计、搭建并持续维护一个由 3 个控制节点和 5 个 Worker 节点组成的生产级 Kubernetes 平台，通过代码统一管理基础设施供应、集群配置、应用部署和持续交付。
@@ -80,17 +82,6 @@ Linux 内核贡献者，NixCN Nix/NixOS 中文社区成员，并参与主办 Nix
 - 通过 Infrastructure as Code 和声明式 Kubernetes 配置维护完整平台。
 
 仓库：[forge.asnk.io/sugar/ayame-cluster](https://forge.asnk.io/sugar/ayame-cluster)
-
-### Windi — 邮件与快递管理系统
-
-正在开发中的邮件与快递一体化管理全栈应用。
-
-- 接入大量第三方 API，实现精准的快递及物流信息追踪。
-- 提供统一界面管理物流信息、单据及相关记录。
-- 支持一站式管理和打印单据、标签及封面。
-- 使用 Svelte、SvelteKit 和 TypeScript 实现全栈应用。
-
-仓库：[forge.asnk.io/sugar/windi](https://forge.asnk.io/sugar/windi)
 
 ### NyaBot — Go 聊天机器人框架
 
