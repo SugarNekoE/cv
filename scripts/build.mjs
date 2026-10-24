@@ -41,7 +41,7 @@ await rm(prerenderDirectory, { recursive: true, force: true });
 try {
   await build({ root: projectRoot });
 
-  for (const asset of ['avatar.png', 'favicon.svg', 'noto-emoji-LICENSE.txt']) {
+  for (const asset of ['_headers', 'avatar.png', 'favicon.svg', 'noto-emoji-LICENSE.txt']) {
     await access(resolve(outputDirectory, asset));
   }
 
