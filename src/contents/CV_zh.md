@@ -9,7 +9,7 @@
 - Forge：[forge.asnk.io/sugar](https://forge.asnk.io/sugar)
 - GitHub：[github.com/SugarNekoE](https://github.com/SugarNekoE)
 
-偏系统方向的软件与基础设施工程师，主要关注 Linux、计算机网络、云原生基础设施、后端工程及 AI 应用。
+偏系统方向的软件与基础设施工程师，主要关注 Linux、计算机网络、云原生基础设施、后端工程及 AI 应用。工作覆盖 Linux 内核开发、云平台，以及面向生产团队的私有 LLM 推理平台。
 
 喜欢设计可靠的系统、建设生产级基础设施，并持续探索前沿技术与工程实践。
 
@@ -19,7 +19,28 @@ Linux 内核贡献者，NixCN Nix/NixOS 中文社区成员，并参与主办 Nix
 
 ## 项目经历
 
+### DeepInfer SM80
+#### SM80 推理适配（开发中）
+
+正在开发：将 DeepInfer 优化推理栈迁移至 NVIDIA SM80 GPU，重点适配最主要的 Decode 路径。
+
+- 针对 SM80 适配 GEMM、专家并行（EP）、MLA、Select 与 JIT 等相关组件。
+- 将 DeepInfer 最主要的 Decode 路径迁移至 Ampere，并保持现有优化推理运行时。
+- 将 DeepSeek-V4.1-Flash 推理从上游 SM100 与 Ascend 目标平台扩展至 SM80 部署。
+
+### Linux Kernel
+#### 硬件与驱动开发
+
+参与 Linux 内核硬件监控、音频与设备驱动等模块的开发与修复。
+
+- 参与 hwmon 驱动及硬件监控接口开发。
+- 参与 ALSA 音频驱动开发与修复，包括 USB 音频设备。
+- 参与 platform 与硬件相关子系统的设备驱动改动。
+
+仓库：[forge.asnk.io/sugar/linux](https://forge.asnk.io/sugar/linux)
+
 ### NixCN & NixCN Conf
+#### 开源贡献与开源社区会议组织
 
 - 参与 NixCN 社区基础设施及开源项目的开发与维护。
 - 参与 NixCN Conf 的组织工作，会议主要围绕 Nix/NixOS 生态、可复现系统及相关开源技术。
@@ -28,7 +49,8 @@ Linux 内核贡献者，NixCN Nix/NixOS 中文社区成员，并参与主办 Nix
 
 组织：[forge.asnk.io/nixcn](https://forge.asnk.io/nixcn)
 
-### Flake — 声明式 NixOS 与 Home Manager 配置
+### Flake
+#### 声明式 NixOS 与 Home Manager 配置
 
 用于管理 NixOS 系统与 Home Manager 用户环境的个人 Nix flake。
 
@@ -37,7 +59,8 @@ Linux 内核贡献者，NixCN Nix/NixOS 中文社区成员，并参与主办 Nix
 
 仓库：[forge.asnk.io/sugar/flake](https://forge.asnk.io/sugar/flake)
 
-### Asai Blog — 静态博客与发布系统
+### Asai Blog
+#### 静态博客与发布系统
 
 采用函数式编程技术栈构建的静态博客：使用 Haskell（Hakyll 和 Pandoc）生成站点，使用 Elm 构建交互前端，内容通过 Obsidian 编写。
 
@@ -46,7 +69,8 @@ Linux 内核贡献者，NixCN Nix/NixOS 中文社区成员，并参与主办 Nix
 
 仓库：[forge.asnk.io/sugar/asai-blog](https://forge.asnk.io/sugar/asai-blog)
 
-### ACS K8s — Serverless CI Runner 系统
+### ACS K8s
+#### Serverless CI Runner 系统
 
 基于阿里云 ACS Serverless Kubernetes 构建的 Forgejo Actions Runner 系统，旨在减少 Runner 空闲资源占用，相较于维护专用服务器或全天运行的集群，更好地控制成本。
 
@@ -56,7 +80,8 @@ Linux 内核贡献者，NixCN Nix/NixOS 中文社区成员，并参与主办 Nix
 
 仓库：[forge.asnk.io/sugar/acs-k8s](https://forge.asnk.io/sugar/acs-k8s)
 
-### Git 索引系统 — 超大规模仓库处理
+### Git 索引系统
+#### 超大规模仓库处理
 
 构建高并发 Git 索引系统，针对 Linux 内核等超大规模仓库进行优化。
 
@@ -68,7 +93,8 @@ Linux 内核贡献者，NixCN Nix/NixOS 中文社区成员，并参与主办 Nix
 
 网站：[forge.asnk.io](https://forge.asnk.io)
 
-### Ayame Cluster — 生产级 Kubernetes 平台
+### Ayame Cluster
+#### 生产级 Kubernetes 平台
 
 独立设计、搭建并持续维护一个由 3 个控制节点和 5 个 Worker 节点组成的生产级 Kubernetes 平台，通过代码统一管理基础设施供应、集群配置、应用部署和持续交付。
 
@@ -79,58 +105,44 @@ Linux 内核贡献者，NixCN Nix/NixOS 中文社区成员，并参与主办 Nix
 - 承载并维护代码托管、容器镜像仓库、通信服务、数据库及 Web 应用等生产工作负载。
 - 部署并维护 Istio、cert-manager、Sealed Secrets、CloudNativePG 及 CSI 持久化存储。
 - 设计生产网络、TLS/PKI、服务网络、存储、密钥管理及数据库基础设施。
-- 通过 Infrastructure as Code 和声明式 Kubernetes 配置维护完整平台。
+- 通过 IaC 和声明式 Kubernetes 配置维护完整平台。
 
 仓库：[forge.asnk.io/sugar/ayame-cluster](https://forge.asnk.io/sugar/ayame-cluster)
-
-### NyaBot — Go 聊天机器人框架
-
-参与开发基于 Go 的开源聊天机器人框架 NyaBot，贡献 19 个已合并 PR。
-
-- 实现 go-cqhttp 的 HTTP、正向与反向 WebSocket 接入、事件分发及常用操作 API 封装。
-- 建设 Go/Lua 扩展机制，并完善配置、数据持久化及多架构容器发布自动化。
-
-仓库：[github.com/SNENET/NyaBot](https://github.com/SNENET/NyaBot)
-
-文档：[github.com/SNENET/NyaBot-Docs](https://github.com/SNENET/NyaBot-Docs)
 
 ---
 
 ## 工作经历
 
-### 基础设施与 AI 工程师 — 教育行业
+### 全栈工程师与 AI 基础设施工程师
+#### 教育行业
 
 2026 – 至今
 
-从事教育领域工作，主要负责生产基础设施、应用运维体系建设，以及大语言模型相关应用研究。
+从事教育领域工作，覆盖全栈产品研发、生产基础设施、应用运维及大语言模型应用研究。
 
-- 参与设计和开发生产级应用运维管理平台。
-- 建设和维护生产应用所需的网络与应用基础设施。
-- 参与部署自动化、应用生命周期管理、服务网络及基础设施可靠性建设。
-- 研究前沿大语言模型在教育领域中的实际应用。
+- 负责生产级项目运维管理平台的设计与开发。
+- 设计开发基于 Haskell 的 LaTeX 实时智能体输入输出论文生成系统。
+- 负责基于 Torch 与 DeepMind 模型的高等数学图形生成模型后端设计与开发。
+- 基于 NetBird 搭建企业 Zero Trust 互联网络平台，替换原有付费 Tailscale 方案，实现对网络设备与服务访问权限的细粒度管理。
+- 搭建并部署基于多台服务器、共 16 卡 A800-80G 的 DeepSeek-V4.1-Flash 模型平台，优化 SM80 vLLM 兼容运行时，供团队工作流私有使用。
+- 建设和维护生产应用所需的网络与应用基础设施，覆盖部署自动化、应用生命周期管理、服务网络及基础设施可靠性建设。
 - 探索 AI 在完整产品研发生命周期中的应用，包括产品规划、设计、开发、测试及迭代。
 - 研究利用 LLM 与 Agent 工具优化产品、设计与开发团队之间的协作和生产效率。
 
-### 首席技术官（CTO）— 医疗教育科技行业
+### 首席技术官（CTO）
+#### 医疗教育科技行业
 
 2023 年 4 月 – 2026 年 4 月 · 3 年
 
-负责 AI 赋能医疗教育与训练系统的技术架构和产品研发，覆盖软件、硬件、传感器数据采集、数据分析及人机交互。
+负责 AI 赋能医疗教育与训练系统的技术架构和产品研发，覆盖软件、硬件、传感器数据、多模态模型及人机交互。
 
-- 加入时团队约 5 人，深度参与团队主要建设工作，并伴随团队发展至约 50 人规模。
-- 参与建立团队技术基础、工程规范、架构方向及跨部门协作模式。
-- 实践并推进敏捷开发与工程管理，持续优化迭代、协作、交付及研发流程。
-- 负责整体系统架构设计，并直接参与产品核心技术框架设计。
-- 制定技术方向，并参与指导产品发展方向、架构演进及工程优先级。
-- 负责 AI 辅助医疗教育系统中软硬件结合系统的设计和研发。
+- 加入时团队约 5 人，深度参与团队建设并伴随团队发展至约 50 人，参与建立团队技术基础、工程规范、架构方向及跨部门协作模式。
+- 负责整体系统架构设计，直接参与产品核心技术框架设计，并参与指导产品方向与工程优先级。
+- 主导研发高精度医疗操作识别，结合多模态模型与人机交互设计教育流程。
 - 设计从传感器数据采集、信号处理、数据分析到交互可视化的端到端数据链路。
-- 参与设计将实时传感器及分析数据转化为训练反馈的人机交互系统。
-- 研究覆盖完整医疗教育和训练流程的连续动态指标检测体系。
-- 设计基于多维指标、时间序列及行为数据的训练效果评价与跟踪方法。
-- 使用 AI 与数据驱动方法支持医疗训练过程中的分析、评估及指导。
-- 工作内容横跨产品、软件、硬件、数据、AI 与研究等多个领域。
-- 参与制定医疗教育动态指标检测及评价相关的技术及行业标准。
-- 在承担技术管理和架构指导职责的同时，持续直接参与核心系统设计与实现。
+- 参与设计将实时传感器及分析数据转化为可执行训练反馈的人机交互系统。
+- 研究覆盖完整训练流程的连续动态指标，并设计基于多维指标、时间序列及行为数据的训练效果评价与跟踪方法。
+- 使用 AI 与数据驱动方法支持训练分析、评估及指导，并参与制定医疗教育动态指标检测及评价相关的技术及行业标准。
 
 ### IDC 平台工程师
 
@@ -148,7 +160,8 @@ Linux 内核贡献者，NixCN Nix/NixOS 中文社区成员，并参与主办 Nix
 
 - 编程语言：Go、C、C++、Rust、TypeScript、Python
 - 系统：Linux、Nix / NixOS、RHEL
-- 云原生与基础设施：Kubernetes、Terraform、Argo CD、GitOps、CI/CD、Infrastructure as Code
+- 云原生与基础设施：Kubernetes、Terraform、Argo CD、GitOps、CI/CD、IaC
+- 云平台：阿里云、GCP、Hetzner
 - 网络：BGP、DNS、AS200720 持有者
 - AI 与人机交互：LLM 应用与开发、Agent 工作流、人机交互
 
@@ -158,12 +171,10 @@ Linux 内核贡献者，NixCN Nix/NixOS 中文社区成员，并参与主办 Nix
 
 - 开源软件与开源社区
 - Linux 生态
-- Nix / NixOS 生态
+- 可复现环境
 - 计算机网络
 - 嵌入式工程
 - 猫猫
 - 二次元
 
 热爱工作，也喜欢持续探索前沿技术、工具和工程实践。
-
-~~VRChat 2000+小时 玩家~~
