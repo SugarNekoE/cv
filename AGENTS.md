@@ -55,29 +55,92 @@ website that publishes them.
   client router, runtime endpoints, persistence, or external services without a
   new concrete requirement.
 - Keep repository-local agent skills under `.agents/skills`, durable review
-  records under `.ai`, and Nix/devenv configuration in the existing root files.
+  records under `.ai/reviews`, and Nix/devenv configuration in the existing root
+  files.
 - Do not create empty directories, placeholder layers, or speculative build
   machinery. Add a boundary only when real content or automation needs it.
 - Preserve unrelated human-authored changes and do not reformat the whole CV for
   a narrowly scoped edit.
 
-## Skills and Human Review
+## Mandatory Recorded Human Review
 
-Use `$skill-creator` whenever creating or changing a repository-local skill.
-
-Every repository mutation must use `$human-review`.
+Every agent performing a repository mutation must use the `$human-review` skill
+and follow its sharded transcript, section, reconciliation, and
+one-section-at-a-time review workflow.
 
 - Read `.agents/skills/human-review/SKILL.md` and every reference it selects
   before changing repository files.
-- Record material requests, corrections, decisions, actions, failures, and
-  validation results in `.ai/transcript.md`.
-- Maintain `.ai/checklist.md` with stable review IDs for every changed content
-  claim, section, structure, link, configuration, skill, test, document, and
-  delivery artifact.
-- Present related checks in coherent batches of 10–50 items and never mark a
-  check approved on an agent's authority.
-- Stop for human review before staging agent-authored changes, committing,
-  pushing, merging, or rewriting history.
+- Record every material user request, correction, decision, action, failure, and
+  validation result in `.ai/reviews/<review-slug>/transcript/` as one immutable
+  file per event. Derive `<review-slug>` from the branch name (lowercase, `/` to
+  `-`), or use a name the human chooses when working on `main`.
+- Build and maintain `.ai/reviews/<review-slug>/sections/*.md` with stable IDs
+  for important decisions and grouped evidence for routine implementation.
+  Preserve existing IDs; never renumber or duplicate them.
+- Present only important or substantial changes for human decisions, grouped by
+  owning section. Give each displayed item its functional context, exact scope,
+  and a brief impact statement covering factual accuracy, chronology,
+  attribution, language, privacy, publication exposure, rendering and print
+  output, or tooling. There is no minimum check count, and sections are never
+  padded with routine work.
+- Decide routine wording, mechanical metadata, formatting, confirmed link
+  targets, and dependency synchronization as the agent. Record these as
+  `agent-reviewed`, not `approved`, and summarize them without listing each
+  item. If classification is uncertain, treat the item as important.
+- Before opening or resuming a review, read the complete review directory
+  (`review.md`, every section file, and every transcript entry), inspect the
+  working tree, and reconcile all of them.
+- Persist each human answer and agreed action before acting on it. An approval
+  applies only to the important impacts explicitly shown. Never mark an
+  important item approved on an agent's authority.
+- `.ai/transcript.md` and `.ai/checklist.md` are read-only history from the
+  pre-sharded layout. Do not append to them or recreate them for new work.
+- Review records stay local: `.gitignore` excludes `.ai/`. Do not change that
+  rule or commit ledger files unless the human explicitly asks.
+- Write every record in English, including ledger files, commit messages, and
+  review briefs, regardless of the language the human uses to converse.
+
+## Human Review and Git Authorization Required
+
+Important or substantial changes must be reviewed by a human before being
+committed. Routine work may be agent-reviewed under the mandatory workflow and
+does not need per-item human approval. It may be committed only after the
+owning section's important impacts are resolved and the human explicitly
+authorizes the commit.
+
+- Never run `git add`, `git commit`, `git push`, `git merge`, `git
+  cherry-pick`, or a history-rewriting command (`rebase`, `reset`,
+  `commit --amend`) on your own initiative. Do so only when the human explicitly
+  asks. Preserve files the human already staged.
+- After making edits, stop and present the material impacts so the human can
+  review them. Do not burden the review with routine implementation detail, and
+  do not chain edits directly into a commit.
+- Never perform irreversible or destructive operations outside the requested
+  scope, including deleting branches, force pushing, dropping data, or removing
+  files, without explicit human confirmation first.
+
+## Commit Conventions
+
+Commits must be signed off and follow `type(scope): subject` with a mandatory
+scope.
+
+- Use `git commit -s` so the `Signed-off-by:` trailer is present.
+- Types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `build`, `ci`,
+  `perf`, `style`, `revert`.
+- Use a lowercase imperative subject with no trailing period, and a meaningful
+  scope such as `cv`, `docs`, `agents`, or `tooling`. Combine scopes with commas
+  for multi-area changes.
+- Write the subject and body in English.
+
+```bash
+# GOOD
+git commit -s -m "feat(cv): add kernel contributor entry"
+git commit -s -m "docs(agents): align review workflow with sharded ledgers"
+
+# BAD
+git commit -m "update cv"        # no sign-off, no scope
+git commit -s -m "Updated CV."   # wrong mood, trailing period, no scope
+```
 
 ## Reproducible Tooling
 
@@ -98,26 +161,7 @@ Every repository mutation must use `$human-review`.
 
 - Use parallel writers only when the human explicitly requests delegation and
   scopes can have exclusive file ownership.
-- The lead agent is the sole writer for `.ai/transcript.md` and
-  `.ai/checklist.md`. Workers report material events and evidence to the lead.
+- The lead agent is the sole writer for the active
+  `.ai/reviews/<review-slug>/` files. Workers report material events and
+  evidence to the lead.
 - Workers do not stage, commit, merge, cherry-pick, or open review rounds.
-
-## Git Authorization
-
-All changes must be reviewed by a human before delivery.
-
-- Never run `git add`, `git commit`, `git push`, `git merge`, `git cherry-pick`,
-  or a history-rewriting command on your own initiative. Preserve files already
-  staged by the human, but do not stage agent-authored changes without approval.
-- After editing, present the changed behavior, validation, risks, and unresolved
-  checklist items. Completed implementation is not permission to commit.
-- Never perform destructive or irreversible operations outside the requested
-  scope without explicit human confirmation.
-
-After explicit approval, commits must be signed off and follow
-`type(scope): subject`.
-
-- Use `git commit -s` so the `Signed-off-by:` trailer is present.
-- Use a lowercase imperative subject with no trailing period and a meaningful
-  scope such as `cv`, `docs`, `agents`, or `tooling`.
-- Never add a `Co-authored-by:` trailer.
