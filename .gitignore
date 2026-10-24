@@ -17,6 +17,9 @@ node_modules/
 .prerender/
 build/
 
+# Standalone document exports
+dist/
+
 # Local environment values
 .env
 .env.*

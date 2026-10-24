@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  packages = [ pkgs.typst pkgs.noto-fonts-cjk-sans ];
+  packages = [ pkgs.typst pkgs.noto-fonts-cjk-sans pkgs.python3Packages.fonttools ];
 
   env.TYPST_FONT_PATHS = "${pkgs.noto-fonts}/share/fonts:${pkgs.noto-fonts-cjk-sans}/share/fonts";
 

@@ -6,17 +6,24 @@
     below: 9pt,
     grid(
       columns: (1fr, 1fr),
-      column-gutter: 5mm,
+      column-gutter: 0pt,
       row-gutter: 0pt,
+      stroke: 0.4pt + rgb("bdbdbd"),
       ..items.map(item => block(
         breakable: false,
         inset: (top: 3pt, bottom: 3pt, left: 4pt, right: 4pt),
-        stroke: (bottom: 0.4pt + rgb("bdbdbd")),
         text(size: 8.5pt)[#strong(item.at(0)) #item.at(1)],
       )),
     ),
   )
 }
+
+#let entry-date(body) = block(
+  above: 0pt,
+  below: 5pt,
+  sticky: true,
+  body,
+)
 
 #let resume(
   lang: "en",
@@ -45,7 +52,7 @@
   )
   set text(font: fonts, size: 9.5pt, lang: lang, fallback: false)
   set par(leading: 0.43em, justify: false)
-  set list(indent: 0pt, body-indent: 0.6em, spacing: 3pt)
+  set list(indent: 0pt, body-indent: 0.6em, spacing: 4pt)
 
   show link: set text(fill: rgb("000000"))
   show link: underline
@@ -65,10 +72,16 @@
     text(size: 11.5pt, weight: 700, it.body),
   )
   show heading.where(level: 3): it => block(
-    above: 10pt,
+    above: 12pt,
     below: 4pt,
     sticky: true,
     text(size: 10.5pt, weight: 700, it.body),
+  )
+  show heading.where(level: 4): it => block(
+    above: 0pt,
+    below: 7pt,
+    sticky: true,
+    text(size: 9.5pt, weight: 500, fill: rgb("54595d"), it.body),
   )
 
   body

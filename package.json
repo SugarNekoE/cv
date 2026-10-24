@@ -12,13 +12,15 @@
     "dev": "vite",
     "build": "node scripts/build.mjs",
     "build:typst": "node scripts/build-typst.mjs",
+    "build:typst-fonts": "node scripts/build-typst-fonts.mjs",
     "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json && node --check scripts/build.mjs && node --check scripts/build-typst.mjs"
+    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json && node --check scripts/build.mjs && node --check scripts/build-typst.mjs && node --check scripts/build-typst-fonts.mjs"
   },
   "dependencies": {
     "@fontsource-variable/noto-sans": "^5.3.0",
     "@fontsource-variable/noto-sans-sc": "^5.3.0",
-    "@lucide/svelte": "^1.31.0"
+    "@lucide/svelte": "^1.31.0",
+    "typst-wasm": "1.0.0"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
