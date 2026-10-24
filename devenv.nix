@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  packages = [ pkgs.typst ];
+
+  env.TYPST_FONT_PATHS = "${pkgs.noto-fonts}/share/fonts";
+
   languages = {
     javascript = {
       enable = true;

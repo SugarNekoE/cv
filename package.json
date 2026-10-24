@@ -11,8 +11,9 @@
   "scripts": {
     "dev": "vite",
     "build": "node scripts/build.mjs",
+    "build:typst": "node scripts/build-typst.mjs",
     "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json && node --check scripts/build.mjs"
+    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json && node --check scripts/build.mjs && node --check scripts/build-typst.mjs"
   },
   "dependencies": {
     "@fontsource-variable/noto-sans": "^5.3.0",

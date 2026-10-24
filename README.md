@@ -70,6 +70,22 @@ The build uses Vite's native multi-page output for `index.html` and
 complete résumé and page metadata into each file. Browser JavaScript hydrates
 the existing theme and print controls; no server renderer is deployed.
 
+### Typst PDF
+
+The authoritative English Markdown source can also be rendered as an A4 PDF
+through Typst:
+
+```sh
+corepack pnpm build:typst
+```
+
+Run this inside the repository's devenv shell so Typst and the pinned Noto Sans
+variable font are available. The command writes the generated document to
+`build/typst/CV_en.typ` and the PDF to `build/typst/CV_en.pdf`. The Typst input
+is generated from `src/contents/CV_en.md` and must not be edited directly. A
+site build cleans `build/`, so rerun this command after it when both outputs are
+needed.
+
 ## Cloudflare Pages
 
 Connect the repository to Cloudflare Pages and use:
