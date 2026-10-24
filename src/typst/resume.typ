@@ -1,5 +1,5 @@
 // Shared layout for generated résumé documents.
-// Résumé facts come from src/contents/CV_en.md, never from this file.
+// Résumé facts come from src/contents/CV_*.md, never from this file.
 
 #let contact-grid(items) = {
   block(
@@ -18,11 +18,22 @@
   )
 }
 
-#let resume(body) = {
+#let resume(
+  lang: "en",
+  title: "Asai Neko — Résumé",
+  keywords: ("résumé", "systems", "infrastructure", "cloud native", "AI"),
+  body,
+) = {
+  let fonts = if lang == "zh" {
+    ("Noto Sans", "Noto Sans CJK SC")
+  } else {
+    ("Noto Sans",)
+  }
+
   set document(
-    title: "Asai Neko — Résumé",
+    title: title,
     author: "Asai Neko",
-    keywords: ("résumé", "systems", "infrastructure", "cloud native", "AI"),
+    keywords: keywords,
   )
   set page(
     paper: "a4",
@@ -32,7 +43,7 @@
       align(right)[#counter(page).display() / #counter(page).final().first()]
     },
   )
-  set text(font: "Noto Sans", size: 9.5pt, lang: "en", fallback: false)
+  set text(font: fonts, size: 9.5pt, lang: lang, fallback: false)
   set par(leading: 0.43em, justify: false)
   set list(indent: 0pt, body-indent: 0.6em, spacing: 3pt)
 

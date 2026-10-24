@@ -72,18 +72,20 @@ the existing theme and print controls; no server renderer is deployed.
 
 ### Typst PDF
 
-The authoritative English Markdown source can also be rendered as an A4 PDF
-through Typst:
+The authoritative English and Chinese Markdown sources can also be rendered as
+A4 PDFs through Typst:
 
 ```sh
 corepack pnpm build:typst
 ```
 
 Run this inside the repository's devenv shell so Typst and the pinned Noto Sans
-variable font are available. The command writes the generated document to
-`build/typst/CV_en.typ` and the PDF to `build/typst/CV_en.pdf`. The Typst input
-is generated from `src/contents/CV_en.md` and must not be edited directly. A
-site build cleans `build/`, so rerun this command after it when both outputs are
+and Noto Sans CJK SC fonts are available. The command writes
+`build/typst/CV_en.typ` and `build/typst/CV_en.pdf` from
+`src/contents/CV_en.md`, and `build/typst/CV_zh.typ` and
+`build/typst/CV_zh.pdf` from `src/contents/CV_zh.md`. The Typst inputs are
+generated from the Markdown sources and must not be edited directly. A site
+build cleans `build/`, so rerun this command after it when both outputs are
 needed.
 
 ## Cloudflare Pages

@@ -1,9 +1,9 @@
 { pkgs, ... }:
 
 {
-  packages = [ pkgs.typst ];
+  packages = [ pkgs.typst pkgs.noto-fonts-cjk-sans ];
 
-  env.TYPST_FONT_PATHS = "${pkgs.noto-fonts}/share/fonts";
+  env.TYPST_FONT_PATHS = "${pkgs.noto-fonts}/share/fonts:${pkgs.noto-fonts-cjk-sans}/share/fonts";
 
   languages = {
     javascript = {
