@@ -27,6 +27,7 @@
 
 #let resume(
   lang: "en",
+  author: "Asai Neko",
   title: "Asai Neko — Résumé",
   keywords: ("résumé", "systems", "infrastructure", "cloud native", "AI"),
   body,
@@ -39,7 +40,7 @@
 
   set document(
     title: title,
-    author: "Asai Neko",
+    author: author,
     keywords: keywords,
   )
   set page(

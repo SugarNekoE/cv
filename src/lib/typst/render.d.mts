@@ -5,6 +5,9 @@ export interface TypstDocument {
   readonly name: string;
   readonly language: TypstLanguage;
   readonly personalInformationHeading: string;
+  readonly nameLabel: string;
+  readonly workExperienceHeading: string;
+  readonly author: string;
   readonly title: string;
   readonly keywords: readonly string[];
 }

@@ -111,6 +111,40 @@ These files are outside `build/` and are not deployed by the static site build.
 The Typst inputs are generated from the Markdown sources and must not be edited
 directly.
 
+### Local full-identity export
+
+The published résumé uses a pseudonym and industry descriptions instead of
+employer names. A full-identity PDF can be exported locally:
+
+```sh
+corepack pnpm build:typst-full
+```
+
+It reads `src/contents/CV_en.full.local.json` and
+`src/contents/CV_zh.full.local.json`, which are gitignored and must never be
+committed or imported by the site:
+
+```json
+{
+  "name": "Real Name",
+  "work": {
+    "Full-Stack and AI Infrastructure Engineer": "Company Name",
+    "Chief Technology Officer (CTO)": "Company Name",
+    "IDC Platform Engineer": "Company Name"
+  }
+}
+```
+
+`name` replaces the title, the name field, and the PDF title and author.
+`work` maps each `###` job title under the work-experience heading to the
+company name shown as its `####` subtitle; a subtitle is added when the entry
+has none. The export fails when a file is missing or when the job titles do not
+match the Markdown source exactly. Output goes to `dist/typst/CV_en_full.pdf`
+and `dist/typst/CV_zh_full.pdf`.
+
+When these files exist, `pnpm build` fails if any of their values appears in
+`build/`.
+
 ## Cloudflare Pages
 
 Connect the repository to Cloudflare Pages and use:

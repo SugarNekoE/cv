@@ -1,7 +1,9 @@
-import { access, readFile, rm, writeFile } from 'node:fs/promises';
+import { access, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { basename, dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { build } from 'vite';
+import { typstDocuments } from '../src/lib/typst/render.mjs';
+import { fullOverlayPath, fullOverlayValues, readFullOverlay } from './full-overlay.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '..');
 const outputDirectory = resolve(projectRoot, 'build');
@@ -34,6 +36,37 @@ function replaceExactlyOnce(source, pattern, replacement, label, output) {
   }
 
   return source.replace(pattern, () => replacement);
+}
+
+async function assertNoFullOverlayLeak() {
+  const values = [];
+
+  for (const document of typstDocuments) {
+    const path = fullOverlayPath(projectRoot, document);
+
+    try {
+      await access(path);
+    } catch {
+      continue;
+    }
+
+    values.push(...fullOverlayValues(await readFullOverlay(path)));
+  }
+
+  if (values.length === 0) {
+    return;
+  }
+
+  const entries = await readdir(outputDirectory, { recursive: true, withFileTypes: true });
+
+  for (const entry of entries.filter(candidate => candidate.isFile())) {
+    const path = resolve(entry.parentPath, entry.name);
+    const contents = await readFile(path);
+
+    if (values.some(value => contents.includes(value))) {
+      throw new Error(`Local full-identity overlay value leaked into ${path}`);
+    }
+  }
 }
 
 await rm(prerenderDirectory, { recursive: true, force: true });
@@ -117,6 +150,8 @@ try {
     await writeFile(page.output, page.html);
     console.log(`prerendered ${page.lang === 'zh' ? '/' : '/en/'} -> ${page.output}`);
   }
+
+  await assertNoFullOverlayLeak();
 } finally {
   await rm(prerenderDirectory, { recursive: true, force: true });
 }

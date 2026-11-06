@@ -12,9 +12,10 @@
     "dev": "vite",
     "build": "node scripts/build.mjs",
     "build:typst": "node scripts/build-typst.mjs",
+    "build:typst-full": "node scripts/build-typst.mjs --full",
     "build:typst-fonts": "node scripts/build-typst-fonts.mjs",
     "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json && node --check scripts/build.mjs && node --check scripts/build-typst.mjs && node --check scripts/build-typst-fonts.mjs"
+    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json && node --check scripts/build.mjs && node --check scripts/build-typst.mjs && node --check scripts/build-typst-fonts.mjs && node --check scripts/full-overlay.mjs"
   },
   "dependencies": {
     "@fontsource-variable/noto-sans": "^5.3.0",

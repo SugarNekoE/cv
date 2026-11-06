@@ -5,9 +5,16 @@ import {
   renderTypst,
   typstDocuments,
 } from '../src/lib/typst/render.mjs';
+import {
+  applyFullOverlay,
+  fullDocument,
+  fullOverlayPath,
+  readFullOverlay,
+} from './full-overlay.mjs';
 
 const projectRoot = resolve(import.meta.dirname, '..');
 const outputDirectory = resolve(projectRoot, 'dist/typst');
+const full = process.argv.slice(2).includes('--full');
 
 function compile(typstPath, pdfPath) {
   const result = spawnSync(
@@ -36,13 +43,23 @@ function compile(typstPath, pdfPath) {
 
 await mkdir(outputDirectory, { recursive: true });
 
-for (const document of typstDocuments) {
-  const typstPath = resolve(outputDirectory, `${document.name}.typ`);
-  const pdfPath = resolve(outputDirectory, `${document.name}.pdf`);
-  const markdown = await readFile(
-    resolve(projectRoot, document.source),
+for (const sourceDocument of typstDocuments) {
+  let document = sourceDocument;
+  let markdown = await readFile(
+    resolve(projectRoot, sourceDocument.source),
     'utf8',
   );
+
+  if (full) {
+    const overlay = await readFullOverlay(
+      fullOverlayPath(projectRoot, sourceDocument),
+    );
+    markdown = applyFullOverlay(markdown, overlay, sourceDocument);
+    document = fullDocument(sourceDocument, overlay);
+  }
+
+  const typstPath = resolve(outputDirectory, `${document.name}.typ`);
+  const pdfPath = resolve(outputDirectory, `${document.name}.pdf`);
 
   await writeFile(typstPath, renderTypst(markdown, document), 'utf8');
   compile(typstPath, pdfPath);
