@@ -9,7 +9,7 @@
 - Forge：[forge.asnk.io/sugar](https://forge.asnk.io/sugar)
 - GitHub：[github.com/SugarNekoE](https://github.com/SugarNekoE)
 
-偏系统方向的软件与基础设施工程师，主要关注 Linux、计算机网络、云原生基础设施、后端工程及 AI 应用。工作覆盖 Linux 内核开发、云平台，以及面向生产团队的私有 LLM 推理平台。
+偏系统方向的软件与基础设施工程师，主要关注 Linux、计算机网络、云原生基础设施、可观测性、后端工程及 AI 应用。工作覆盖 Linux 内核开发、云平台，以及面向生产团队的私有 LLM 推理平台。
 
 喜欢设计可靠的系统、建设生产级基础设施，并持续探索前沿技术与工程实践。
 
@@ -18,6 +18,18 @@ Linux 内核贡献者，NixCN Nix/NixOS 中文社区成员，并参与主办 Nix
 ---
 
 ## 项目经历
+
+### 可观测性平台
+#### 监控、告警与安全
+
+基于 Prometheus、ClickHouse 与 Grafana 自建的可观测性与安全平台，覆盖服务器、数据库及 Web 服务，并通过 Nix 声明式管理。
+
+- 可观测性：实时检测服务状态与性能指标，统一采集指标与链路追踪数据，并通过可视化看板呈现。
+- 查询性能：针对 ClickHouse 日均约 3 亿条遥测数据进行分区分表与索引优化，加速查询。
+- 自动化告警：搭建自动化告警机制，服务异常时实时推送通知。
+- 安全性：实时从多来源安全漏洞数据库获取数据，持续监控并管理线上服务的安全漏洞；通过单点登录与基于角色的权限控制保护访问，数据上报需鉴权，密钥加密管理。
+
+仓库：[forge.asnk.io/sugar/flake](https://forge.asnk.io/sugar/flake)
 
 ### DeepInfer SM80
 #### SM80 推理适配（开发中）
@@ -161,7 +173,8 @@ Linux 内核贡献者，NixCN Nix/NixOS 中文社区成员，并参与主办 Nix
 - 编程语言：Go、C、C++、Rust、TypeScript、Python
 - 系统：Linux、Nix / NixOS、RHEL
 - 云原生与基础设施：Kubernetes、Terraform、Argo CD、GitOps、CI/CD、IaC
-- 云平台：阿里云、GCP、Hetzner
+- 云平台：阿里云、Google Cloud（GCP）、Hetzner
+- 可观测性：Prometheus、VictoriaMetrics（vmagent）、ClickHouse、Grafana、OpenTelemetry
 - 网络：BGP、DNS、AS200720 持有者
 - AI 与人机交互：LLM 应用与开发、Agent 工作流、人机交互
 

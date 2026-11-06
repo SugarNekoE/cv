@@ -9,7 +9,7 @@
 - Forge: [forge.asnk.io/sugar](https://forge.asnk.io/sugar)
 - GitHub: [github.com/SugarNekoE](https://github.com/SugarNekoE)
 
-Systems-oriented software and infrastructure engineer focused on Linux, networking, cloud-native infrastructure, backend engineering, and applied AI. My work covers Linux kernel development, cloud platforms, and private LLM inference platforms for production teams.
+Systems-oriented software and infrastructure engineer focused on Linux, networking, cloud-native infrastructure, observability, backend engineering, and applied AI. My work covers Linux kernel development, cloud platforms, and private LLM inference platforms for production teams.
 
 I enjoy designing reliable systems, building production infrastructure, and exploring emerging technologies and engineering practices.
 
@@ -18,6 +18,18 @@ Linux kernel contributor, member of NixCN, the Chinese Nix/NixOS community, and 
 ---
 
 ## Project Experience
+
+### Observability Platform
+#### Monitoring, Alerting & Security
+
+A self-hosted observability and security platform for servers, databases, and web services, built on Prometheus, ClickHouse, and Grafana and managed declaratively with Nix.
+
+- Observability: monitor service health and performance metrics in real time, with metrics and traces collected into a single platform and visualized in dashboards.
+- Query performance: optimized ClickHouse partitioning, table layout, and indexing for roughly 300 million telemetry rows per day to accelerate queries.
+- Automated alerting: built an automated alerting system that sends real-time notifications on service anomalies.
+- Security: continuously pull vulnerability data from multiple security databases to monitor and manage vulnerabilities in production services in real time; protect access with single sign-on and role-based permissions, authenticate data ingestion, and keep secrets encrypted.
+
+Repository: [forge.asnk.io/sugar/flake](https://forge.asnk.io/sugar/flake)
 
 ### DeepInfer SM80
 #### SM80 Inference Adaptation (In Development)
@@ -161,7 +173,8 @@ Participated in the construction, operation, and management of a production IDC 
 - Programming Languages: Go, C, C++, Rust, TypeScript, Python
 - Systems: Linux, Nix / NixOS, RHEL
 - Cloud Native & Infrastructure: Kubernetes, Terraform, Argo CD, GitOps, CI/CD, IaC
-- Cloud Platforms: Alibaba Cloud, GCP, Hetzner
+- Cloud Platforms: Alibaba Cloud, Google Cloud (GCP), Hetzner
+- Observability: Prometheus, VictoriaMetrics (vmagent), ClickHouse, Grafana, OpenTelemetry
 - Networking: BGP, DNS, AS200720 holder
 - AI & HCI: LLM application and development, Agent workflows, Human-Computer Interaction
 
